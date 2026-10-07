@@ -9,7 +9,7 @@ body {
   overflow-x: hidden;
 }
 
-section { padding: 80px 24px; max-width: 520px; margin: 0 auto; }
+section { padding: 30px 24px; max-width: 520px; margin: 0 auto; }
 
 h2 {
   font-family: 'Cormorant Garamond', serif;
@@ -21,7 +21,8 @@ h2 {
 .hero {
   position: relative;
   max-width: none;
-  min-height: 100vh;
+  min-height: min(92vh, 700px);    /* высота первого экрана = примерно высота рамки */
+  padding: 10px 24px;
   display: flex; flex-direction: column; justify-content: center; align-items: center;
   overflow: hidden;
 }

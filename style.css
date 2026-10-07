@@ -1,0 +1,148 @@
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  background: #ffffff;
+  color: #4b4b4b;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section { padding: 80px 24px; max-width: 520px; margin: 0 auto; }
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 2rem;
+  color: #5e7d6b; margin-bottom: 20px;
+}
+
+/* ===== Первый экран ===== */
+.hero {
+  position: relative;
+  max-width: none;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  overflow: hidden;
+}
+
+/* Картинка-рамка по центру */
+.frame {
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  left: 0;                         /* чтобы сдвинуть рамку вправо, поставьте, например, 150px */
+  margin: auto;
+  height: min(90vh, 680px);        /* размер рамки */
+  width: auto;
+  max-width: 95vw;
+  pointer-events: none;
+  mix-blend-mode: multiply;        /* прячет белый фон картинки */
+  animation: frameIn 2s ease both, breathe 6s ease-in-out 2s infinite;
+}
+@keyframes frameIn { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.015); } }
+
+/* Текст всегда поверх картинки */
+.hero > p, .hero > h1, .hero > div { position: relative; z-index: 1; }
+
+/* Появление по очереди (задержка --d) */
+.fade { animation: fadeUp 1.4s ease var(--d, 0s) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+
+#greeting { font-size: 1.1rem; margin-bottom: 16px; }
+
+.monogram {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem; color: #5e7d6b;
+  margin-bottom: 16px;
+}
+.monogram span { font-size: 1.4rem; color: #c49aa0; }
+
+.subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; max-width: 280px; line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 2.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+.and {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem; color: #5e7d6b;
+}
+
+/* Дата: Июль | 16 | Пятница */
+.date {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 20px;
+  font-size: .8rem; letter-spacing: 2px; text-transform: uppercase;
+}
+.date strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500; font-size: 2.6rem;
+  padding: 0 14px;
+  border-left: 1px solid #4b4b4b;
+  border-right: 1px solid #4b4b4b;
+}
+.year { margin-top: 8px; letter-spacing: 3px; font-size: .9rem; }
+#countdown { margin-top: 14px; font-size: .75rem; color: #5e7d6b; }
+
+/* ===== Блоки при прокрутке ===== */
+.reveal { opacity: 0; transform: translateY(60px); transition: all 1s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal p { line-height: 1.8; }
+
+/* ===== Анкета ===== */
+form { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+input:not([type]), select, textarea {
+  padding: 12px; border: 1px solid #d6e2da; border-radius: 6px;
+  font: inherit; background: #fbfdfb;
+}
+label { display: flex; align-items: center; gap: 8px; }
+button {
+  padding: 14px; margin-top: 6px;
+  background: #5e7d6b; color: #fff; border: none; border-radius: 30px;
+  font: inherit; letter-spacing: 1px; cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+button:hover { transform: scale(1.04); background: #4c6a59; }
+.hidden { display: none; }
+
+/* ===== Падающие листики ===== */
+.heart {
+  position: fixed; top: -30px;
+  pointer-events: none; animation: fall linear forwards;
+}
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+/* ===== Дресс-код ===== */
+.palette {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 14px;
+  margin: 28px 0;
+}
+.palette span {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .12);
+  transform: scale(0);
+  transition: transform .5s cubic-bezier(.34, 1.56, .64, 1);  /* «пружинка» */
+  transition-delay: calc(var(--i) * .15s + .4s);                /* по очереди */
+}
+.reveal.visible .palette span { transform: scale(1); }
+.reveal.visible .palette span:hover { transform: scale(1.15); transition-delay: 0s; }
+
+.dress p { margin-bottom: 8px; }
+.dress strong { font-weight: 400; color: #5e7d6b; }
+
+.note {
+  margin-top: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-style: italic;
+}

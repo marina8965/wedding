@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кристина и Дмитрий — приглашение</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section class="hero">
+    <img src="corner.png" class="frame" alt="">
+
+    <p id="greeting" class="fade"></p>
+    <div class="monogram fade">К <span>&</span> Д</div>
+    <p class="subtitle fade" style="--d:.3s">Приглашаем вас разделить с нами этот особенный день!</p>
+
+    <h1 class="fade" style="--d:.6s">Кристина</h1>
+    <p class="and fade" style="--d:.8s">и</p>
+    <h1 class="fade" style="--d:1s">Дмитрий</h1>
+
+    <div class="date fade" style="--d:1.3s">
+      <span>Июль</span>
+      <strong>16</strong>
+      <span>Пятница</span>
+    </div>
+    <p class="year fade" style="--d:1.4s">2027</p>
+    <p id="countdown" class="fade" style="--d:1.6s"></p>
+  </section>
+
+  <section class="reveal">
+    <h2>Где и когда</h2>
+    <p>15:00 — регистрация, ЗАГС, ул. Примерная, 1</p>
+    <p>17:00 — банкет, ресторан «Название»</p>
+  </section>
+
+  <section class="reveal">
+    <h2>Анкета гостя</h2>
+    <form id="rsvp" action="https://formspree.io/f/ВАШ_КОД" method="POST">
+      <input id="guestName" name="Имя" placeholder="Ваше имя и фамилия" required>
+      <label><input type="radio" name="Присутствие" value="Приду" required> Обязательно приду</label>
+      <label><input type="radio" name="Присутствие" value="Не смогу"> К сожалению, не смогу</label>
+      <select name="Горячее">
+        <option>Мясо</option>
+        <option>Рыба</option>
+        <option>Вегетарианское</option>
+      </select>
+      <textarea name="Пожелания" placeholder="Пожелания молодожёнам"></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+    <p id="thanks" class="hidden">Спасибо! Ваш ответ получен</p>
+  </section>
+ <section class="reveal">
+  <h2>Дресс-код</h2>
+  <p>Нам будет очень приятно, если в своих нарядах вы поддержите цветовую гамму нашей свадьбы:</p>
+
+  <div class="palette">
+    <span style="--c:#5e7d6b; --i:0"></span>
+    <span style="--c:#8fae9b; --i:1"></span>
+    <span style="--c:#c8d5b9; --i:2"></span>
+    <span style="--c:#e8dccb; --i:3"></span>
+    <span style="--c:#c49aa0; --i:4"></span>
+  </div>
+
+  <div class="dress">
+    <p><strong>Девушкам:</strong> лёгкие платья пастельных и зелёных оттенков</p>
+    <p><strong>Мужчинам:</strong> светлые или серые костюмы, можно без галстука</p>
+  </div>
+
+  
+</section> 
+
+  <script src="script.js"></script>
+</body>
+</html>
